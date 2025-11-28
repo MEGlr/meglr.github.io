@@ -1,0 +1,77 @@
+<svg viewBox="0 0 850 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="taskGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#8B7FC7;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="domainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="trainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+        </linearGradient>
+        <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#374151" />
+        </marker>
+    </defs>
+    
+    <!-- Loop Label -->
+    <text x="100" y="30" fill="#6b7280" font-size="14" font-weight="600" font-family="Inter, sans-serif">For t = 1 to T:</text>
+
+    <!-- 1. Standard Pretraining -->
+    <g transform="translate(225, 50)">
+        <rect width="400" height="120" rx="8" fill="url(#trainGrad)" opacity="0.9" filter="drop-shadow(0 4px 6px rgb(0 0 0 / 0.1))"/>
+        <text x="200" y="35" text-anchor="middle" fill="white" font-size="18" font-weight="700">Standard Training</text>
+        <line x1="40" y1="50" x2="360" y2="50" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+        <text x="200" y="75" text-anchor="middle" fill="white" font-size="15">Sample x ~ mix(α)</text>
+        <text x="200" y="100" text-anchor="middle" fill="white" font-size="15">Update parameters θ</text>
+    </g>
+
+    <!-- Input D_train -->
+    <text x="110" y="115" text-anchor="middle" fill="#4b5563" font-size="13" font-weight="600">D_train</text>
+    <line x1="140" y1="110" x2="215" y2="110" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+    <!-- Arrow 1 -->
+    <line x1="425" y1="170" x2="425" y2="230" stroke="#374151" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="435" y="205" fill="#4b5563" font-size="13" font-weight="500" font-style="italic">θ</text>
+
+    <!-- 2. Task Reweighting -->
+    <g transform="translate(225, 230)">
+        <rect width="400" height="130" rx="8" fill="url(#taskGrad)" opacity="0.9" filter="drop-shadow(0 4px 6px rgb(0 0 0 / 0.1))"/>
+        <text x="200" y="35" text-anchor="middle" fill="white" font-size="18" font-weight="700">Task Reweighting</text>
+         <text x="200" y="55" text-anchor="middle" fill="white" font-size="12" font-style="italic" opacity="0.9">(every ΔT_z steps)</text>
+        <line x1="40" y1="65" x2="360" y2="65" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+        <text x="200" y="90" text-anchor="middle" fill="white" font-size="15">Sample y_n ~ T_n, x ~ mix(α)</text>
+        <text x="200" y="115" text-anchor="middle" fill="white" font-size="15">Update z (Prioritize slow tasks)</text>
+    </g>
+
+    <!-- Input Target Tasks -->
+    <text x="110" y="295" text-anchor="middle" fill="#4b5563" font-size="13" font-weight="600">Target Tasks</text>
+    <line x1="150" y1="290" x2="215" y2="290" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+    <!-- Arrow 2 -->
+    <line x1="425" y1="360" x2="425" y2="420" stroke="#374151" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="435" y="395" fill="#4b5563" font-size="13" font-weight="500" font-style="italic">z</text>
+
+    <!-- 3. Domain Reweighting -->
+    <g transform="translate(225, 420)">
+        <rect width="400" height="130" rx="8" fill="url(#domainGrad)" opacity="0.9" filter="drop-shadow(0 4px 6px rgb(0 0 0 / 0.1))"/>
+        <text x="200" y="35" text-anchor="middle" fill="white" font-size="18" font-weight="700">Domain Reweighting</text>
+        <text x="200" y="55" text-anchor="middle" fill="white" font-size="12" font-style="italic" opacity="0.9">(every ΔT_α steps)</text>
+        <line x1="40" y1="65" x2="360" y2="65" stroke="white" stroke-opacity="0.3" stroke-width="1"/>
+        <text x="200" y="90" text-anchor="middle" fill="white" font-size="15">Sample x_k ~ D_k, y ~ mix(z)</text>
+        <text x="200" y="115" text-anchor="middle" fill="white" font-size="15">Update α (Align with tasks)</text>
+    </g>
+
+    <!-- Input Source Domains -->
+    <text x="110" y="485" text-anchor="middle" fill="#4b5563" font-size="13" font-weight="600">Source Domains</text>
+    <line x1="160" y1="480" x2="215" y2="480" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+    <!-- Feedback Loop -->
+    <path d="M 625 485 Q 780 485 780 267 Q 780 110 625 110" stroke="#6B7280" stroke-width="2" stroke-dasharray="5,5" fill="none" marker-end="url(#arrowhead)"/>
+    <text x="720" y="300" text-anchor="middle" fill="#4b5563" font-size="13" font-weight="600" transform="rotate(90, 720, 300)">Update α for next step</text>
+
+</svg>
+

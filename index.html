@@ -11,19 +11,76 @@
     <title>Maria Ios Glarou</title>
 
     <!-- SEO -->
-    <meta name="description" content="Maria Ios Glarou — Master's student at NTUA, doing a master's thesis at EPFL on adaptive data selection and robust multi-target pretraining." />
+    <meta name="description" content="Maria Ios Glarou — Research Assistant @ EPFL, MSc from NTUA. Research on adaptive data selection and robust multi-target pretraining." />
     <meta name="author" content="Maria Ios Glarou" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Maria Ios Glarou" />
-    <meta property="og:description" content="Master's student @ NTUA · Thesis at EPFL · Reliable and robust AI, reasoning stability, safety in deployment." />
+    <meta property="og:description" content="Research Assistant @ EPFL · MSc @ NTUA · Reliable and robust AI, reasoning stability, safety in deployment." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="images/avatar.jpg" />
     <meta property="og:url" content="/" />
 
     <link rel="stylesheet" href="assets/css/main.css" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="apple-touch-icon" href="images/favicon.jpg" />
+    <style>
+      body #header {
+        background-color: transparent !important;
+        background-image: url('images/chamonix_lake.jpg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: scroll !important;
+      }
+      body #header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 0;
+        pointer-events: none;
+      }
+      body #header > .inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Floating Grape Emoji Animation */
+      .work-item {
+        position: relative;
+      }
+      .bouncing-grape {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 28px;
+        z-index: 10;
+        pointer-events: none;
+        animation: gentleFloat 4s ease-in-out infinite;
+      }
+      @keyframes gentleFloat {
+        0%, 100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.9;
+        }
+        50% {
+          transform: translateY(-8px) rotate(5deg);
+          opacity: 1;
+        }
+      }
+      @media (max-width: 736px) {
+        .bouncing-grape {
+          font-size: 20px;
+          top: 10px;
+          right: 10px;
+        }
+      }
+    </style>
   </head>
   <body class="is-preload">
     <!-- Header -->
@@ -31,7 +88,7 @@
       <div class="inner">
         <a href="#" class="image avatar"><img src="images/avatar.jpg" alt="Portrait of Maria Ios Glarou" /></a>
         <h1><strong>Maria Ios Glarou</strong></h1>
-        <p>Master's Student @ NTUA · Visiting Researcher @ EPFL</p>
+        <p>Research Assistant @ EPFL · MSc @ NTUA</p>
       </div>
     </header>
 
@@ -43,18 +100,20 @@
           <h2>About</h2>
         </header>
         <p>
-          I am a master's student at the National Technical University of Athens (NTUA). I am currently conducting my
-          master's thesis at EPFL, supervised by Prof. <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener">Martin Jaggi</a>. My advisor at NTUA is Prof.
+          I am currently a Research Assistant at EPFL. I completed my master's degree at the National Technical University of Athens (NTUA). I conducted my
+          master's thesis at EPFL, supervised by Prof. <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener">Martin Jaggi</a>. My advisor at NTUA was Prof.
           <a href="http://cvsp.cs.ntua.gr/maragos/" target="_blank" rel="noopener">Petros Maragos</a>.
         </p>
+        <!-- Previous research interests text (for reference):
+        I am broadly interested in improving the generalization ability and robustness of AI models. I want to understand how and when models fail to generalize, how issues such as hallucinations, inconsistent reasoning, or unstable behavior are provoked when models are deployed in real-world, potentially adversarial, settings.
+
+        I would like to draw on both theoretical insights and evidence from these failures to improve training—whether in pretraining, finetuning, or alignment—by developing objectives and signals that enhance reasoning and reliability. I see exciting opportunities to extend these directions to multimodal models and agents, where the combination of perception, reasoning, and action presents additional challenges. I am particularly motivated by high-stakes domains such as medicine, where advances in reasoning and reliability could directly improve human health.
+        -->
         <p>
-           I am broadly interested in improving the generalization ability and robustness of AI models. I want to understand how and when models fail to generalize, how issues such as hallucinations, inconsistent reasoning, or unstable behavior are provoked when models are deployed in real-world, potentially adversarial, settings.
-        </p>
-        <p>
-          I would like to draw on both theoretical insights and evidence from these failures to improve training—whether in pretraining, finetuning, or alignment—by developing objectives and signals that enhance reasoning and reliability. I see exciting opportunities to extend these directions to multimodal models and agents, where the combination of perception, reasoning, and action presents additional challenges. I am particularly motivated by high-stakes domains such as medicine, where advances in reasoning and reliability could directly improve human health.
+          I work on making AI models more steerable and capable of reliable reasoning, focusing on generalization and robustness under distribution shifts. I'm particularly interested in how reasoning fails through hallucinations or faulty steps, and how we can guide training to learn representations aligned with our goals. I see promise in training-dynamics-aware approaches that intelligently select which samples and tokens to train on, with scientific inference and healthcare applications as motivating testbeds.
         </p>
         <ul class="actions">
-          <li><a href="assets/pdfs/cv-.pdf" class="button" target="_blank" rel="noopener">Learn More (CV)</a></li>
+          <li><a href="assets/pdfs/cv_maria_ios_glarou.pdf" class="button" target="_blank" rel="noopener">Learn More (CV)</a></li>
         </ul>
       </section>
 
@@ -63,9 +122,12 @@
         <h2>Recent Work</h2>
         <div class="row">
           <article class="col-6 col-12-xsmall work-item">
-            <a href="images/fulls/07.jpg" class="image fit thumb"><img src="images/thumbs/07.jpg" alt="Project thumbnail" /></a>
-            <h3>Adaptive Training for Multi-Target Pretraining</h3>
-            <p>Master's Thesis · EPFL (Prof. Martin Jaggi) & NTUA (Prof. Petros Maragos)</p>
+            <div style="position: relative;">
+              <span class="bouncing-grape">🍇</span>
+              <a href="grape.html" class="image fit thumb" data-poptrox="ignore"><img src="images/figures/general/grape-method-diagram.svg" alt="GRAPE Method Diagram" /></a>
+            </div>
+            <h3>GRAPE: Adaptive Multi-Task Learning</h3>
+            <p>Master's Thesis · EPFL (Prof. Martin Jaggi) & NTUA (Prof. Petros Maragos) · <a href="grape.html">View Project</a></p>
           </article>
 
 <!--           <article class="col-6 col-12-xsmall work-item">
@@ -86,9 +148,11 @@
             <p>Vision AI project · Real-time multi-object tracking under occlusions</p>
           </article> -->
         </div>
+        <!--
         <ul class="actions">
           <li><a href="https://github.com/MEGlr" target="_blank" rel="noopener" class="button">Full Portfolio</a></li>
         </ul>
+        -->
       </section>
 
       <!-- Three -->
@@ -100,10 +164,6 @@
               <li>
                 <h3 class="icon solid fa-home"><span class="label">Address</span></h3>
                 Lausanne, Switzerland<br />
-              </li>
-              <li>
-                <h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-                +41 766873924
               </li>
               <li>
                 <h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
