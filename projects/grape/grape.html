@@ -394,6 +394,30 @@
             margin: 8px 0 0 0;
         }
 
+        /* Extra compact layout on small phones */
+        @media (max-width: 600px) {
+            .results-grid {
+                gap: 16px;
+                margin: 24px 0;
+            }
+            .result-figure {
+                padding: 16px;
+            }
+            .result-stats {
+                padding: 16px;
+                margin: 24px 0;
+            }
+            .stat-item {
+                padding: 12px;
+                margin: 12px 0;
+            }
+            #reasoning-tasks,
+            #multilingual-pretraining {
+                padding: 24px;
+                margin: 32px 0;
+            }
+        }
+
         /* Content */
         .content {
             font-size: 17px;
@@ -452,6 +476,18 @@
             margin: 20px 0 30px 0;
             padding: 15px;
             border-radius: 6px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 600px) {
+            .formula-annotated .formula-content {
+                padding: 10px;
+                margin: 12px 0 20px 0;
+            }
+            .formula-annotated .formula-content mjx-container {
+                font-size: 0.85em;
+            }
         }
 
         .annotations-grid {
@@ -907,6 +943,28 @@
             margin: 0;
         }
 
+        @media (max-width: 700px) {
+            .ablation-content {
+                padding: 16px;
+            }
+            .ablation-content-inner {
+                padding: 16px;
+            }
+            .ablation-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .ablation-card {
+                padding: 16px;
+            }
+            .ablation-card-title {
+                font-size: 15px;
+            }
+            .ablation-card-content {
+                font-size: 13px;
+            }
+        }
+
         /* Section Dividers */
         .section-divider {
             margin: 48px 0;
@@ -1256,7 +1314,8 @@
                 <p style="margin-bottom: 24px; color: var(--gray-600);">We compare GRAPE against several baseline methods for domain reweighting:</p>
                 <div class="result-stats" style="margin-top: 0;">
                     <div class="stat-item" style="background: var(--paper); border-left: none; padding: 0;">
-                        <table class="comparison-table" style="margin-top: 0;">
+                        <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                        <table class="comparison-table" style="margin-top: 0; min-width: 700px;">
                             <thead>
                                 <tr>
                                     <th>Method</th>
@@ -1311,6 +1370,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
