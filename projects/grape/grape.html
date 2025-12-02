@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRAPE</title>
-    <link rel="icon" type="image/png" href="../../html-assets/grape.png">
+    <link rel="icon" type="image/png" href="html-assets/grape.png">
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -971,12 +971,12 @@
     <div class="header">
         <div class="container header-content">
             <h1 class="title">
-                <img src="../../html-assets/grape.png" alt="GRAPE" class="header-logo">
+                <img src="html-assets/grape.png" alt="GRAPE" class="header-logo">
                 <span><span class="grape">GRAPE</span>: Optimize Data Mixture for <span class="grape">G</span>roup <span class="grape">R</span>obust Multi-target <span class="grape">A</span>daptive <span class="grape">P</span>r<span class="grape">E</span>training</span>
             </h1>
             <p class="subtitle">Multi-Source-Multi-Target Domain Reweighting via Group DRO</p>
             <p class="authors">
-                <img src="../../html-assets/epfl-logo.png" alt="EPFL" class="epfl-logo-header">
+                <img src="html-assets/epfl-logo.png" alt="EPFL" class="epfl-logo-header">
                 <span>Simin Fan, Maria Ios Glarou, Martin Jaggi • MLO, EPFL • NeurIPS 2025</span>
             </p>
             <div class="links">
@@ -1333,19 +1333,19 @@
                     
                     <div class="results-grid" style="margin: 32px 0;">
                             <div class="result-figure">
-                            <img src="../../html-assets/climb_125M_6T_acc05_norm_average.png" alt="CLIMB 125M results">
+                            <img src="html-assets/climb_125M_6T_acc05_norm_average.png" alt="CLIMB 125M results">
                             <div class="caption"><strong>125M Models:</strong> GRAPE achieves <strong>3.27 percentage points</strong> improvement over uniform sampling (44.16% vs 40.89%) and ~1.7 percentage points over DoGE. Outperforms all baselines, improving on <strong>5 out of 6 tasks</strong> above uniform baseline.</div>
                         </div>
                         <div class="result-figure">
-                            <img src="../../html-assets/climb_07B_6tasks_acc05_norm_average_truncate.png" alt="CLIMB 0.7B results">
+                            <img src="html-assets/climb_07B_6tasks_acc05_norm_average_truncate.png" alt="CLIMB 0.7B results">
                             <div class="caption"><strong>0.7B Model:</strong> GRAPE achieves <strong>1.45 percentage points</strong> improvement over uniform sampling (49.56% vs 48.11%) using <strong>40% fewer tokens</strong>, demonstrating significant token efficiency. Shows ~25% faster convergence compared to DoGE. GRAPE improves on <strong>all 6 tasks</strong> above uniform baseline; DoGE improves on only 3 out of 6 tasks.</div>
                         </div>
                         <div class="result-figure">
-                            <img src="../../html-assets/climblab-map-07B-trac-tgt.png" alt="Task weight evolution">
+                            <img src="html-assets/climblab-map-07B-trac-tgt.png" alt="Task weight evolution">
                             <div class="caption"><strong>Dynamic Learning Curriculum:</strong> Task weights reveal a <strong>skill-wise learning curriculum</strong>—reading comprehension tasks (<span class="dataset-name">ARC-E</span>/<span class="dataset-name">ARC-C</span>) are prioritized early, while physical and commonsense reasoning tasks (<span class="dataset-name">PIQA</span>/<span class="dataset-name">HellaSwag</span>) receive higher weights later. Some tasks (<span class="dataset-name">SciQ</span>, <span class="dataset-name">LogiQA</span>) consistently receive lower weights, suggesting they benefit from cross-task generalization.</div>
                         </div>
                         <div class="result-figure">
-                            <img src="../../html-assets/cluster_heatmap.png" alt="Domain weights attribution">
+                            <img src="html-assets/cluster_heatmap.png" alt="Domain weights attribution">
                             <div class="caption"><strong>Domain Weight Distributions:</strong> Final domain weights across 20 clusters show GRAPE emphasizes science/math/education clusters (Clusters 1, 4, 10, 12). In contrast, DoGE shows preference for healthcare/genetics (Cluster 6), RegMix heavily utilizes medical research (Cluster 17), and CRISP favors software/programming (Cluster 11).</div>
                         </div>
                     </div>
@@ -1516,15 +1516,15 @@
                     
                     <div class="results-grid multilingual-compact" style="margin: 32px 0;">
                         <div class="result-figure">
-                            <img src="../../html-assets/wiki-t2.png" alt="Multilingual perplexity">
+                            <img src="html-assets/wiki-t2.png" alt="Multilingual perplexity">
                             <div class="caption"><strong>Multilingual Pretraining:</strong> GRAPE outperforms uniform sampling and DoGE across <strong>all 8 target languages</strong>, accelerating low-resource language modeling by <strong>~60%</strong> in log-perplexity scores. DoGE's efficacy diminishes with multiple target languages simultaneously. <em>Offline methods show biased performance: RegMix improves Catalan, Portuguese, Ukrainian, and Polish but sacrifices Dutch and Danish; CRISP only accelerates Turkish while harming other languages.</em></div>
                         </div>
                         <div class="result-figure">
-                            <img src="../../html-assets/wiki-t2-train_dw.png" alt="Domain weights evolution">
+                            <img src="html-assets/wiki-t2-train_dw.png" alt="Domain weights evolution">
                             <div class="caption"><strong>Source Language Domain Weights:</strong> Evolution of domain weights ($\boldsymbol{\alpha}_t$) across 6 high-resource languages (en, fr, de, es, ru, it) reveals linguistic relationships: Russian aligns with Ukrainian/Polish (Slavic); Italian with Romanian (Romance). For Turkish (no close relatives), GRAPE up-weights German and French.</div>
                         </div>
                         <div class="result-figure">
-                            <img src="../../html-assets/wiki-t2-tgt_dw.png" alt="Task weights evolution">
+                            <img src="html-assets/wiki-t2-tgt_dw.png" alt="Task weights evolution">
                             <div class="caption"><strong>Target Language Task Weights:</strong> Evolution of task weights ($\mathbf{z}_t$) across 8 low-resource languages (tr, uk, ro, pl, nl, pt, ca, da). Early prioritization of Ukrainian and Romanian aligns with related source language weighting. Polish maintains high weight, corresponding with Russian's domain weight.</div>
                         </div>
                     </div>
@@ -1696,11 +1696,11 @@
                                 
                                 <div class="results-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin: 24px 0;">
                                     <div class="result-figure">
-                                        <img src="../../html-assets/progress-metrics-avg.png" alt="Average log-perplexity across metrics" style="width: 100%; height: auto;">
+                                        <img src="html-assets/progress-metrics-avg.png" alt="Average log-perplexity across metrics" style="width: 100%; height: auto;">
                                         <div class="caption"><strong>Average Log-Perplexity:</strong> GRAPE (RoI) achieves best performance on <strong style="color: #5B4B6D;">7 out of 12 task sets</strong>.</div>
                                     </div>
                                     <div class="result-figure">
-                                        <img src="../../html-assets/progress-metrics-worst.png" alt="Worst-case log-perplexity across metrics" style="width: 100%; height: auto;">
+                                        <img src="html-assets/progress-metrics-worst.png" alt="Worst-case log-perplexity across metrics" style="width: 100%; height: auto;">
                                         <div class="caption"><strong>Worst-Case Log-Perplexity:</strong> GRAPE (RoI) demonstrates <strong style="color: #5B4B6D;">superior robustness</strong>, minimizing worst-case performance across tasks.</div>
                                     </div>
                                 </div>
@@ -1894,7 +1894,7 @@
     <div class="footer">
         <div class="container">
             <div class="footer-content">
-                <img src="../../html-assets/epfl-logo.png" alt="EPFL" class="footer-logo">
+                <img src="html-assets/epfl-logo.png" alt="EPFL" class="footer-logo">
                 <p><strong>GRAPE</strong>: Optimize Data Mixture for Group Robust Multi-target Adaptive Pretraining</p>
                 <p>MLO, EPFL • NeurIPS 2025</p>
             </div>
