@@ -212,6 +212,7 @@
             padding-bottom: 24px;
         }
         .abstract {
+            display: none; /* initially hidden, shown when clicking the Abstract button */
             font-size: 18px;
             line-height: 1.8;
             color: var(--gray-700);
@@ -230,17 +231,49 @@
             margin: 40px 0;
             align-items: center;
         }
+        /* Mobile & tablet tweaks */
         @media (max-width: 768px) {
-            .method-overview {
-                grid-template-columns: 1fr;
+            body {
+                font-size: 15px;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .header {
+                padding: 48px 0;
+            }
+            .header-content {
+                text-align: center;
+            }
+            .title {
+                font-size: 32px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             .header-logo {
                 width: 48px;
                 height: 48px;
             }
-            .title {
-                font-size: 36px;
-                flex-wrap: wrap;
+            .subtitle {
+                font-size: 18px;
+            }
+            .links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .link {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+            .section {
+                padding: 40px 0;
+            }
+            .section-title {
+                font-size: 28px;
+            }
+            .method-overview {
+                grid-template-columns: 1fr;
             }
         }
         .method-text {
@@ -949,20 +982,16 @@
             <div class="links">
                 <a href="https://arxiv.org/abs/2505.20380" class="link">Paper</a>
                 <a href="https://github.com/Olivia-fsm/multi-target-data-mixing/tree/master" class="link">Code</a>
+                <a href="Neurips2025_Grape.pptx.png" class="link" target="_blank" rel="noopener">Poster</a>
+                <a href="javascript:void(0)" class="link" onclick="openAbstractFromHeader()">Abstract</a>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <section class="section">
-            <div class="abstract-header active" onclick="toggleAbstract(this)">
-                <h2 class="section-title">Abstract</h2>
-                <span class="abstract-toggle">▼</span>
-            </div>
-            <div class="abstract-content active">
-                <div class="abstract">
-                    The performance of large language models (LLMs) across diverse downstream applications is fundamentally governed by the quality and composition of their <span style="color: #B0A5E8;">pretraining corpora</span>. Existing <span style="color: #B0A5E8;">domain reweighting</span> algorithms primarily optimize <span style="color: #B0A5E8;">data mixtures</span> for a single target task, thereby resulting in models that overfit to specialized objectives while exhibiting substantial performance degradation on other benchmarks. This paper introduces <strong>Group Robust Multi-target Adaptive Pretraining (GRAPE)</strong>, a novel <span style="color: #B0A5E8;">multi-source-multi-target domain reweighting framework</span> designed to calibrate <span style="color: #B0A5E8;">pretraining data mixtures</span> for <span style="color: #B0A5E8;">robust performance across multiple target tasks</span> simultaneously. GRAPE dynamically adjusts sampling weights across source domains (<em><span style="color: #B0A5E8;">domain weights</span></em>) while concurrently modulating <em><span style="color: #B0A5E8;">task weights</span></em> that quantify the relative importance of each individual target task. This adaptive process prioritizes tasks based on their learning difficulty throughout training. We formulate this interleaved reweighting mechanism as a <strong>minimax optimization</strong> problem: The inner maximization adjusts task weights leveraging <strong><span style="color: #B0A5E8;">group distributed-robust-optimization (DRO)</span></strong>, where those tasks demonstrating the least improvement under the current data mixture are prioritized with higher weights; The outer minimization then optimizes domain weights to maximize loss reduction on the prioritized tasks. Experiments on ClimbLab dataset demonstrate that GRAPE consistently outperforms baseline methods in terms of <span style="color: #B0A5E8;">reasoning performance</span> across 6 benchmarks. Furthermore, when applied to <span style="color: #B0A5E8;">multilingual targets</span>, GRAPE effectively identifies optimal training mixtures from mainstream languages, achieving superior language modeling capabilities across 8 low-resource target languages.
-                </div>
+        <section class="section" id="abstract-section">
+            <div class="abstract" id="abstract-text">
+                The performance of large language models (LLMs) across diverse downstream applications is fundamentally governed by the quality and composition of their <span style="color: #B0A5E8;">pretraining corpora</span>. Existing <span style="color: #B0A5E8;">domain reweighting</span> algorithms primarily optimize <span style="color: #B0A5E8;">data mixtures</span> for a single target task, thereby resulting in models that overfit to specialized objectives while exhibiting substantial performance degradation on other benchmarks. This paper introduces <strong>Group Robust Multi-target Adaptive Pretraining (GRAPE)</strong>, a novel <span style="color: #B0A5E8;">multi-source-multi-target domain reweighting framework</span> designed to calibrate <span style="color: #B0A5E8;">pretraining data mixtures</span> for <span style="color: #B0A5E8;">robust performance across multiple target tasks</span> simultaneously. GRAPE dynamically adjusts sampling weights across source domains (<em><span style="color: #B0A5E8;">domain weights</span></em>) while concurrently modulating <em><span style="color: #B0A5E8;">task weights</span></em> that quantify the relative importance of each individual target task. This adaptive process prioritizes tasks based on their learning difficulty throughout training. We formulate this interleaved reweighting mechanism as a <strong>minimax optimization</strong> problem: The inner maximization adjusts task weights leveraging <strong><span style="color: #B0A5E8;">group distributed-robust-optimization (DRO)</span></strong>, where those tasks demonstrating the least improvement under the current data mixture are prioritized with higher weights; The outer minimization then optimizes domain weights to maximize loss reduction on the prioritized tasks. Experiments on ClimbLab dataset demonstrate that GRAPE consistently outperforms baseline methods in terms of <span style="color: #B0A5E8;">reasoning performance</span> across 6 benchmarks. Furthermore, when applied to <span style="color: #B0A5E8;">multilingual targets</span>, GRAPE effectively identifies optimal training mixtures from mainstream languages, achieving superior language modeling capabilities across 8 low-resource target languages.
             </div>
         </section>
 
@@ -1888,46 +1917,18 @@
             }
         }
 
-        function toggleAbstract(header) {
-            const content = header.nextElementSibling;
-            const isActive = header.classList.contains('active');
-            
-            if (isActive) {
-                // Collapse
-                content.style.maxHeight = content.scrollHeight + 'px';
-                // Force reflow
-                content.offsetHeight;
-                content.style.maxHeight = '0px';
-                header.classList.remove('active');
-                content.classList.remove('active');
-            } else {
-                // Expand
-                content.style.maxHeight = '0px';
-                content.classList.add('active');
-                header.classList.add('active');
-                // Force reflow
-                content.offsetHeight;
-                content.style.maxHeight = content.scrollHeight + 'px';
-                
-                // Reset max-height after transition completes
-                setTimeout(() => {
-                    if (content.classList.contains('active')) {
-                        content.style.maxHeight = 'none';
-                    }
-                }, 500);
-            }
-        }
+        // Show the abstract paragraph and scroll to it when clicking the header "Abstract" button
+        function openAbstractFromHeader() {
+            const abstract = document.getElementById('abstract-text') || document.querySelector('.abstract');
+            if (!abstract) return;
 
-        // Initialize abstract as expanded on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const abstractHeader = document.querySelector('.abstract-header');
-            const abstractContent = document.querySelector('.abstract-content');
-            if (abstractHeader && abstractContent) {
-                abstractHeader.classList.add('active');
-                abstractContent.classList.add('active');
-                abstractContent.style.maxHeight = 'none';
-            }
-        });
+            // Make sure the paragraph is visible
+            abstract.style.display = 'block';
+
+            // Smoothly scroll the abstract section into view
+            const section = document.getElementById('abstract-section') || abstract;
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
 
         function toggleAblation(header) {
             const content = header.nextElementSibling;
