@@ -3,3 +3,7 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+index_me.html
+index_with_pic.html
+grape-poster.html
+neurips-poster.html
