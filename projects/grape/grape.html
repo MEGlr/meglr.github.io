@@ -2009,6 +2009,17 @@
             } else {
                 header.classList.add('active');
                 content.classList.add('active');
+
+                // After expanding, keep the ablation header in view (helps on mobile)
+                setTimeout(() => {
+                    const offset = 80;
+                    const rect = header.getBoundingClientRect();
+                    const top = rect.top + window.pageYOffset - offset;
+                    window.scrollTo({
+                        top,
+                        behavior: 'smooth'
+                    });
+                }, 50);
             }
         }
 
