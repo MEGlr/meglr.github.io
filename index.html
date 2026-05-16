@@ -8,15 +8,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title>Maria Ios Glarou</title>
+    <title>Maria Ios Glarou — Research @ EPFL</title>
 
     <!-- SEO -->
-    <meta name="description" content="Maria Ios Glarou — Research Assistant @ EPFL, MSc from NTUA. Research on adaptive data selection and robust multi-target pretraining." />
+    <meta name="description" content="Maria Ios Glarou — Research Assistant @ EPFL. Working on robust, adaptable AI: training dynamics, generalization, and how models learn from each other and their own outputs." />
     <meta name="author" content="Maria Ios Glarou" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Maria Ios Glarou" />
-    <meta property="og:description" content="Research Assistant @ EPFL · MSc @ NTUA · Reliable and robust AI, reasoning stability, safety in deployment." />
+    <meta property="og:title" content="Maria Ios Glarou — Research @ EPFL" />
+    <meta property="og:description" content="Research Assistant @ EPFL · MSc NTUA · Robust and adaptable AI, training dynamics, generalization." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="images/avatar.jpg" />
     <meta property="og:url" content="/" />
@@ -26,9 +26,19 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="apple-touch-icon" href="images/favicon.jpg" />
     <style>
+      body {
+        background-color: #eef5f4;
+        background-image:
+          linear-gradient(90deg, rgba(18, 36, 40, 0.32), rgba(255, 255, 255, 0.12) 42%, rgba(255, 255, 255, 0.38)),
+          url('images/greenland.jpeg') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-attachment: fixed !important;
+      }
+
       body #header {
         background-color: transparent !important;
-        background-image: url('images/greenland.jpeg') !important;
+        background-image: none !important;
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
@@ -41,7 +51,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.3);
+        background: linear-gradient(180deg, rgba(4, 18, 22, 0.2), rgba(4, 18, 22, 0.48));
         z-index: 0;
         pointer-events: none;
       }
@@ -49,8 +59,59 @@
         position: relative;
         z-index: 1;
       }
+      .image.avatar {
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .image.avatar img {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .image.avatar:hover img {
+        transform: scale(1.05);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+      }
+      body #main {
+        background: rgba(255, 255, 255, 0.76);
+        border-left: 1px solid rgba(255, 255, 255, 0.72);
+        box-shadow: -18px 0 45px rgba(21, 52, 58, 0.13);
+        min-height: 100vh;
+        -webkit-backdrop-filter: blur(10px) saturate(1.08);
+        backdrop-filter: blur(10px) saturate(1.08);
+      }
+      body #main > section {
+        border-top-color: rgba(61, 114, 119, 0.22);
+      }
+      body #main h2,
+      body #main h3,
+      body #main strong {
+        color: #405b5e;
+      }
+      body #main p,
+      body #main li {
+        color: #6b7678;
+      }
+      body .button {
+        background: rgba(255, 255, 255, 0.36);
+        border-color: rgba(64, 91, 94, 0.28) !important;
+        box-shadow: 0 8px 24px rgba(21, 52, 58, 0.08);
+      }
+      body .image.thumb:after {
+        background: rgba(21, 155, 168, 0.72);
+      }
+      body #footer {
+        background-color: transparent !important;
+        background-image: none !important;
+      }
+      @media (max-width: 980px) {
+        body {
+          background-attachment: scroll !important;
+        }
+        body #main {
+          border-left: 0;
+          box-shadow: 0 -20px 45px rgba(21, 52, 58, 0.1);
+        }
+      }
 
-      /* Floating Grape Emoji Animation */
       .work-item {
         position: relative;
       }
@@ -88,7 +149,7 @@
       <div class="inner">
         <a href="#" class="image avatar"><img src="images/avatar.jpg" alt="Portrait of Maria Ios Glarou" /></a>
         <h1><strong>Maria Ios Glarou</strong></h1>
-        <p>Research Assistant @ EPFL · MSc @ NTUA</p>
+        <p>Research Assistant @ EPFL · MSc NTUA</p>
       </div>
     </header>
 
@@ -100,10 +161,11 @@
           <h2>About</h2>
         </header>
         <p>
-          I am currently a Research Assistant at EPFL. I completed my master's degree at the National Technical University of Athens (NTUA). I conducted my
-          <a href="assets/pdfs/thesis_maria_ios_glarou.pdf" target="_blank" rel="noopener">master's thesis</a> at EPFL, supervised by Prof.
-          <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener">Martin Jaggi</a>. My advisor at NTUA was Prof.
-          <a href="http://cvsp.cs.ntua.gr/maragos/" target="_blank" rel="noopener">Petros Maragos</a>.
+          I am a Research Assistant at EPFL, working with Prof.
+          <a href="https://people.epfl.ch/martin.jaggi" target="_blank" rel="noopener">Martin Jaggi</a>.
+          I hold an MSc from the National Technical University of Athens (NTUA), where my advisor was Prof.
+          <a href="http://cvsp.cs.ntua.gr/maragos/" target="_blank" rel="noopener">Petros Maragos</a>,
+          and completed my <a href="assets/pdfs/thesis_maria_ios_glarou.pdf" target="_blank" rel="noopener">master's thesis</a> at EPFL under Prof. Jaggi's supervision.
         </p>
         <!-- Previous research interests text (for reference):
         I am broadly interested in improving the generalization ability and robustness of AI models. I want to understand how and when models fail to generalize, how issues such as hallucinations, inconsistent reasoning, or unstable behavior are provoked when models are deployed in real-world, potentially adversarial, settings.
@@ -114,13 +176,13 @@
           I work on making AI models more <strong>robust</strong>, <strong>exploratory</strong>, and <strong>adaptable</strong>. I'm particularly interested in how models align with our goals as they learn from <strong>each other</strong> and from their <strong>own outputs</strong>, and in the <strong>training dynamics</strong> that govern when models <strong>memorize</strong>, <strong>reason</strong>, or <strong>generalize</strong>.
         </p>
         <ul class="actions">
-          <li><a href="assets/pdfs/cv_maria_ios_glarou.pdf" class="button" target="_blank" rel="noopener">Learn More (CV)</a></li>
+          <li><a href="assets/pdfs/cv_maria_ios_glarou.pdf" class="button" target="_blank" rel="noopener">View CV</a></li>
         </ul>
       </section>
 
       <!-- Two -->
       <section id="two">
-        <h2>Recent Work</h2>
+        <h2>Selected Work</h2>
         <div class="row">
           <article class="col-6 col-12-xsmall work-item">
             <div style="position: relative;">
@@ -182,6 +244,9 @@
         <ul class="icons">
           <li>
             <a href="https://github.com/MEGlr" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">Github</span></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/maria-ios-glarou/" class="icon brands fa-linkedin-in" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a>
           </li>
           <li>
             <a href="mailto:maria.glarou@epfl.ch" class="icon solid fa-envelope"><span class="label">Email</span></a>
