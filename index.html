@@ -141,13 +141,63 @@
           right: 10px;
         }
       }
+
+      /* ── Page entrance ── */
+      /* background image shows immediately; panels fade up after */
+      #header,
+      #main {
+        opacity: 0;
+      }
+
+      body:not(.is-preload) #header {
+        animation: pageEntrance 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both;
+      }
+
+      body:not(.is-preload) #main {
+        animation: pageEntrance 0.85s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
+      }
+
+      @keyframes pageEntrance {
+        from { opacity: 0; transform: translateY(14px); }
+        to   { opacity: 1; transform: translateY(0);    }
+      }
+
+      /* ── GRAPE card ── */
+      .grape-card-inner {
+        position: relative;
+        border-radius: 0.45em;
+        margin-bottom: 1.5em;
+        transition: box-shadow 0.4s ease;
+        will-change: transform;
+        transform-style: preserve-3d;
+      }
+      .grape-card-inner .grape-link.image.fit {
+        margin: 0 !important;
+      }
+      .grape-card-inner img {
+        display: block;
+        width: 100%;
+        border-radius: 0.35em;
+      }
+
+      /* ── Grape single hop on hover (plays once, settles) ── */
+      .work-item:hover .bouncing-grape {
+        animation: grapeHop 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1 forwards !important;
+      }
+      @keyframes grapeHop {
+        0%   { transform: translateY(0px)  scale(1);    }
+        35%  { transform: translateY(-18px) scale(0.93); }
+        60%  { transform: translateY(2px)  scale(1.06); }
+        80%  { transform: translateY(-7px) scale(0.98); }
+        100% { transform: translateY(0px)  scale(1);    }
+      }
     </style>
   </head>
   <body class="is-preload">
     <!-- Header -->
     <header id="header">
       <div class="inner">
-        <a href="#" class="image avatar"><img src="images/avatar.jpg" alt="Portrait of Maria Ios Glarou" /></a>
+        <span class="image avatar"><img src="images/avatar.jpg" alt="Portrait of Maria Ios Glarou" /></span>
         <h1><strong>Maria Ios Glarou</strong></h1>
         <p>Research Assistant @ EPFL · MSc NTUA</p>
       </div>
@@ -185,9 +235,11 @@
         <h2>Selected Work</h2>
         <div class="row">
           <article class="col-6 col-12-xsmall work-item">
-            <div style="position: relative;">
+            <div class="grape-card-inner">
               <span class="bouncing-grape">🍇</span>
-              <a href="projects/grape/grape.html" class="image fit thumb" data-poptrox="ignore"><img src="images/figures/general/grape-method-diagram.svg" alt="GRAPE Method Diagram" /></a>
+              <a href="projects/grape/grape.html" class="image fit grape-link" data-poptrox="ignore">
+                <img src="images/figures/general/grape-method-diagram.svg" alt="GRAPE Method Diagram" />
+              </a>
             </div>
             <h3>GRAPE: Adaptive Multi-Task Learning</h3>
             <p><a href="assets/pdfs/thesis_maria_ios_glarou.pdf" target="_blank" rel="noopener">Master's Thesis</a> · EPFL (Prof. Martin Jaggi) & NTUA (Prof. Petros Maragos) · <a href="projects/grape/grape.html">View Project</a></p>
@@ -253,8 +305,8 @@
           </li>
         </ul>
         <ul class="copyright">
-          <li>&copy; Design: <a href="http://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li>
-          <li><span id="year"></span></li>
+          <li>&copy; <span id="year"></span> Maria Ios Glarou</li>
+          <li>Design: <a href="http://html5up.net" target="_blank" rel="noopener">HTML5 UP</a></li>
         </ul>
       </div>
     </footer>
@@ -270,6 +322,24 @@
     <script>
       // Keep footer year current
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // 3-D tilt on the GRAPE card
+      const grapeCard = document.querySelector('.grape-card-inner');
+      if (grapeCard) {
+        grapeCard.addEventListener('mousemove', e => {
+          const r = grapeCard.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width  - 0.5;
+          const y = (e.clientY - r.top)  / r.height - 0.5;
+          grapeCard.style.transform =
+            `perspective(700px) rotateX(${-y * 8}deg) rotateY(${x * 8}deg) scale(1.02)`;
+          grapeCard.style.boxShadow =
+            `${-x * 14}px ${-y * 14}px 30px rgba(21, 52, 58, 0.18)`;
+        });
+        grapeCard.addEventListener('mouseleave', () => {
+          grapeCard.style.transform = '';
+          grapeCard.style.boxShadow = '';
+        });
+      }
 
       // Dummy Google Maps init to avoid console error if API key is present
       function initMap() {}
