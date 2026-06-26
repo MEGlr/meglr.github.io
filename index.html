@@ -348,10 +348,8 @@
     <!-- (Optional) Google Maps - requires a valid API key to render -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script> -->
 
-    <!-- ClustrMaps (customized to keep background transparent) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+    <!-- ClustrMaps visitor map — loaded lazily after page load so it never blocks rendering.
+         ClustrMaps v2 bundles its own Leaflet, so no separate Leaflet include is needed. -->
     <style>
       #clustrmaps-widget-v2 * { background-color: transparent !important; }
       .jvectormap-container { background-color: transparent !important; }
@@ -362,12 +360,14 @@
       href="//cdn.clustrmaps.com/map_v2.js?cl=f9f9f9&w=a&t=n&d=P1us-I_g_S7L1wNk2krrGDIg5Mz3O-yVjIrfqToKhE4&co=e5e5e5&cmo=a31a1a&cmn=31b5b3"
       id="clustrmaps-widget-v2"
       style="background-color: transparent !important;"
-    >
-      <script
-        type="text/javascript"
-        id="clustrmaps"
-        src="//cdn.clustrmaps.com/map_v2.js?cl=f9f9f9&w=a&t=n&d=P1us-I_g_S7L1wNk2krrGDIg5Mz3O-yVjIrfqToKhE4&co=e5e5e5&cmo=a31a1a&cmn=31b5b3"
-      ></script>
-    </a>
+    ></a>
+    <script>
+      window.addEventListener('load', function () {
+        var s = document.createElement('script');
+        s.id = 'clustrmaps';
+        s.src = '//cdn.clustrmaps.com/map_v2.js?cl=f9f9f9&w=a&t=n&d=P1us-I_g_S7L1wNk2krrGDIg5Mz3O-yVjIrfqToKhE4&co=e5e5e5&cmo=a31a1a&cmn=31b5b3';
+        document.getElementById('clustrmaps-widget-v2').appendChild(s);
+      });
+    </script>
   </body>
 </html>
