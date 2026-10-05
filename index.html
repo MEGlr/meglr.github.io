@@ -180,6 +180,24 @@
         border-radius: 0.35em;
       }
 
+      /* ── DETER card ── */
+      .deter-card-inner {
+        position: relative;
+        border-radius: 0.45em;
+        margin-bottom: 1.5em;
+      }
+      .deter-card-inner .image.fit {
+        margin: 0 !important;
+      }
+      .deter-card-inner .image:before {
+        display: none;
+      }
+      .deter-card-inner img {
+        display: block;
+        width: 100%;
+        border-radius: 0.35em;
+      }
+
       /* ── Grape single hop on hover (plays once, settles) ── */
       .work-item:hover .bouncing-grape {
         animation: grapeHop 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) 1 forwards !important;
@@ -243,6 +261,16 @@
             </div>
             <h3>GRAPE: Adaptive Multi-Task Learning</h3>
             <p><a href="assets/pdfs/thesis_maria_ios_glarou.pdf" target="_blank" rel="noopener">Master's Thesis</a> · EPFL (Prof. Martin Jaggi) & NTUA (Prof. Petros Maragos) · <a href="projects/grape/grape.html">View Project</a></p>
+          </article>
+
+          <article class="col-6 col-12-xsmall work-item">
+            <div class="deter-card-inner">
+              <span class="image fit">
+                <img src="images/figures/general/deter-method-diagram.svg" alt="How DETER works: one model with a suppression step every P pretraining steps, and the fine-tuning an adversary needs after release" />
+              </span>
+            </div>
+            <h3>DETER: Suppression During Pretraining for Tamper Resistance</h3>
+            <p>Paper · EPFL (Prof. Martin Jaggi)</p>
           </article>
 
 <!--           <article class="col-6 col-12-xsmall work-item">
